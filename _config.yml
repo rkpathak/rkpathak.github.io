@@ -1,1 +1,5 @@
+title: Tech & Notes          # Replaces your username in the top header & bottom-left
+author: Ramakant            # Replaces your username under the footer title (or use a pen name)
+description: >-              # Replaces the default GitHub repo description on the bottom-right
+  Short notes on code and life.
 theme: minima
