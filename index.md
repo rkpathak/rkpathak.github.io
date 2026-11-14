@@ -1,4 +1,3 @@
----\ntitle: Linux File I/O in Practice\n---
 # Linux File I/O: A Practical Reference
 
 How to read and write files on Linux, which API to pick, and what can go wrong.
