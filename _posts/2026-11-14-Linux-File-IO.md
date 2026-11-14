@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Linux File I/O: A Practical Reference"
 ---
 
