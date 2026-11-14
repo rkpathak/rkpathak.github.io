@@ -3,8 +3,20 @@ author: Ramakant            # Replaces your username under the footer title (or 
 description: >-              # Replaces the default GitHub repo description on the bottom-right
   Short notes on code and life.
 
-# remote_theme: daattali/beautiful-jekyll
+  # remote_theme: daattali/beautiful-jekyll
 remote_theme: mmistakes/minimal-mistakes
-minimal_mistakes_skin: "air"   # Optional: try "default", "air", "contrast", or "dark"
+minimal_mistakes_skin: "air"
+
 plugins:
   - jekyll-remote-theme
+  - jekyll-include-cache
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      toc: true
+      toc_sticky: true
+
