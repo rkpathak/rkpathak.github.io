@@ -841,23 +841,23 @@ Always measure on your real filesystem and hardware. Results change a lot betwee
 
 ## 8. Common mistakes checklist
 
-- [ ] Treating a successful `write()`, `fflush()` or `fclose()` as "on disk". Use `fsync`/`fdatasync`.
-- [ ] Not checking the return values of `fclose()`, `close()` and `fsync()`.
-- [ ] Retrying `fsync` after a failure and trusting the second result.
-- [ ] Assuming `write()` writes everything. Handle short writes and `EINTR`.
-- [ ] Forgetting to `fsync` the **directory** after create or rename.
-- [ ] Replacing a file in place instead of write-temp-then-`rename`.
-- [ ] `O_DIRECT` with a `malloc` buffer or unaligned offset or length (`EINVAL`).
-- [ ] Testing `O_DIRECT` on tmpfs.
-- [ ] `mmap` on a sparse file (disk full gives `SIGBUS`) or on a file someone else may truncate.
-- [ ] Using `lseek` + `read` on a shared fd from several threads. Use `pread`.
-- [ ] Using `pwrite` on an `O_APPEND` fd and expecting the offset to be honored.
-- [ ] Expecting `epoll` or `O_NONBLOCK` to make regular-file I/O non-blocking.
-- [ ] Freeing or reusing a buffer before its async I/O has completed.
-- [ ] Reading `errno` after libaio or liburing calls. They return `-errno`.
-- [ ] Calling `posix_fadvise(DONTNEED)` on dirty data and expecting it to be freed.
-- [ ] Leaking file descriptors, or leaking them into child processes (`O_CLOEXEC`).
-- [ ] Benchmarking with a warm page cache and believing the numbers.
+- Treating a successful `write()`, `fflush()` or `fclose()` as "on disk". Use `fsync`/`fdatasync`.
+- Not checking the return values of `fclose()`, `close()` and `fsync()`.
+- Retrying `fsync` after a failure and trusting the second result.
+- Assuming `write()` writes everything. Handle short writes and `EINTR`.
+- Forgetting to `fsync` the **directory** after create or rename.
+- Replacing a file in place instead of write-temp-then-`rename`.
+- `O_DIRECT` with a `malloc` buffer or unaligned offset or length (`EINVAL`).
+- Testing `O_DIRECT` on tmpfs.
+- `mmap` on a sparse file (disk full gives `SIGBUS`) or on a file someone else may truncate.
+- Using `lseek` + `read` on a shared fd from several threads. Use `pread`.
+- Using `pwrite` on an `O_APPEND` fd and expecting the offset to be honored.
+- Expecting `epoll` or `O_NONBLOCK` to make regular-file I/O non-blocking.
+- Freeing or reusing a buffer before its async I/O has completed.
+- Reading `errno` after libaio or liburing calls. They return `-errno`.
+- Calling `posix_fadvise(DONTNEED)` on dirty data and expecting it to be freed.
+- Leaking file descriptors, or leaking them into child processes (`O_CLOEXEC`).
+- Benchmarking with a warm page cache and believing the numbers.
 
 ---
 
